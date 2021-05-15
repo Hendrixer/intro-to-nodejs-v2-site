@@ -1,0 +1,36 @@
+---
+title: Next.js Refresh
+---
+
+## How do I Next.js again?
+Don't worry, I gotcha. Let's quickly get a refresh on what Next.js is by scaffolding out a quick app. Follow along if you need a reminder.
+
+We can use `create-next-app` to generate an app:
+```
+npx create-next-app
+```
+This will give you a deployable ready, hello world Next.js app. Open it up, lets see what's inside.
+
+## Conventions
+### Files
+Next.js uses conventions based off the file system to make magic happen for us:
+
+* `/pages` - any component here will create a route for your app as the name of the file. 
+* `/pages/api` - any function in here is an API function, remember, Next.js is about that fullstack life
+* `/pages/[id]` - a page with a dynamic param named `id`. 
+* `/pages/_app` - your entry component. Perfect for all your `<Provider />` stuff and global css. Completely optional
+* `/pages/_document` - basically your index.html. Also, optional
+
+
+### Pages
+Pages are special. They can tap into server side data fetching functions that Next.js providers or us. These functions basically give us control on how to build and server each page and if they have any data requirements.
+
+### Styling
+Next.js comes with two baked in ways to style your apps:
+* Global styles (.css, .styl, .scss, .less, ...are their more now?)
+* CSS modules (scoped css, perfect for components)
+ 
+And you can use any other React styling approach you'd like as well (emotion, theme-ui, etc).
+
+### Deploying
+Vercel is the go for deploying Next.js, since, well, they made Next.js. However, other providers are increasingly adding support for Next.js, like [Netlify](https://www.netlify.com/blog/2020/11/30/how-to-deploy-next.js-sites-to-netlify/). Gotta love it! 💗

@@ -1,0 +1,15 @@
+{
+  "extends": "@ijsto",
+  "rules": {
+    "react/jsx-props-no-spreading": "off",
+    "unicorn/no-null": "off",
+    "semi": [
+      "warn",
+      "never"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ]
+  }
+}

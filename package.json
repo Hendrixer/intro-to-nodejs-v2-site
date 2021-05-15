@@ -1,15 +1,40 @@
 {
-  "name": "course",
+  "name": "curriculum",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint"
   },
   "dependencies": {
+    "evergreen-ui": "^6.0.0",
+    "gray-matter": "^4.0.2",
+    "lodash.merge": "^4.6.2",
+    "lodash.orderby": "^4.6.0",
+    "mdx-prism": "^0.3.1",
+    "mdx-prism-2": "^2.0.0",
     "next": "10.2.0",
+    "next-mdx-remote": "^1.0.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "refractor": "^3.2.0",
+    "rehype": "^11.0.0",
+    "rehype-shiki": "^0.0.9",
+    "remark-autolink-headings": "^6.0.1",
+    "remark-code-titles": "^0.1.1",
+    "remark-highlight.js": "^6.0.0",
+    "remark-slug": "^6.0.0"
+  },
+  "devDependencies": {
+    "@ijsto/eslint-config": "*",
+    "@svgr/webpack": "^5.5.0",
+    "autoprefixer": "^10.2.5",
+    "eslint": "^7.26.0",
+    "jest": "^26.6.3",
+    "postcss": "^8.2.15",
+    "tailwindcss": "^2.1.2"
   }
 }
