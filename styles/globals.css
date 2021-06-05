@@ -18,3 +18,28 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+@font-face {
+  font-family: "Lato";
+  src: url("/fonts/Lato/Lato-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("/fonts/Lato/Lato-Light.ttf");
+  font-style: medium;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("/fonts/Lato/Lato-Bold.ttf");
+  font-style: medium;
+  font-weight: 500;
+  font-display: swap;
+}
