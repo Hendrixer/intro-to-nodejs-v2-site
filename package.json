@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "evergreen-ui": "^6.0.0",
     "gray-matter": "^4.0.2",
     "lodash.merge": "^4.6.2",
     "lodash.orderby": "^4.6.0",

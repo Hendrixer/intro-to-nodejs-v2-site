@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
     <React.StrictMode>
       <ThemeProvider>
         <Background>
-          <main>
+          <main className="font-sans dark:text-white">
             <div className="absolute right-0 top-0 mr-4 mt-4 md:mr-6">
               <Toggle />
             </div>
