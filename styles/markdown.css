@@ -81,6 +81,7 @@
 .markdown-body a:active,
 .markdown-body a:hover {
   outline-width: 0;
+  text-decoration: none;
 }
 
 .markdown-body strong {
@@ -137,6 +138,11 @@
 .markdown-body a {
   color: #0366d6;
   text-decoration: none;
+  font-weight: bold;
+}
+
+.markdown-body a::before {
+  content: '🔗 '
 }
 
 .markdown-body a:hover {
@@ -684,6 +690,11 @@
   border-bottom: 1px solid #eaecef;
 }
 
+.dark .markdown-body h1,
+.dark .markdown-body h2 {
+  border-bottom: 1px solid rgba(255,255,255, 0.2);
+}
+
 .markdown-body h2 {
   font-size: 1.5em;
 }
@@ -707,7 +718,7 @@
 
 .markdown-body ol,
 .markdown-body ul {
-  padding-left: 2em;
+  padding-left: 1em;
 }
 
 .markdown-body ol ol,
@@ -720,10 +731,12 @@
 
 .markdown-body li {
   word-wrap: break-all;
+  margin: 15px 0px;
 }
 
 .markdown-body li>p {
   margin-top: 16px;
+  display: inline;
 }
 
 .markdown-body li+li {
@@ -773,9 +786,9 @@
 }
 
 .markdown-body img {
-  max-width: 100%;
+  max-width: 600px;
   box-sizing: initial;
-  background-color: #fff;
+  margin: 15px 0px;
 }
 
 .markdown-body img[align=right] {
@@ -790,9 +803,14 @@
   padding: .2em .4em;
   margin: 0;
   font-size: 85%;
-  background-color: rgb(7, 7, 7);
+  background-color: rgba(243, 244, 246);
   border-radius: 3px;
-  color:  rgba(16, 185, 129);
+  color: #059669;
+  /* border: 1px solid rgba(0,0,0,0.7); */
+}
+
+.dark .markdown-body code {
+  background-color: rgb(7,7,7);
 }
 
 .markdown-body pre {
@@ -826,6 +844,11 @@
   line-height: 1.45;
   background-color: #f6f8fa;
   border-radius: 3px;
+}
+
+.dark .markdown-body .highlight pre,
+.dark .markdown-body pre {
+  background-color: black;
 }
 
 .markdown-body pre code {
@@ -1069,7 +1092,7 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string {
   color: #a67f59;
-  background: #ffffff;
+  /* background: #ffffff; */
 }
 .token.atrule,
 .token.attr-value,
@@ -1137,4 +1160,18 @@ pre[class*="language-"] > code[class*="language-"] {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   margin-top: 0;
+}
+
+.me {
+  width: 120px;
+  border-radius: 20px;
+}
+
+.me-container {
+  display: flex;
+  align-items: center;
+}
+
+.me-container div {
+  padding: 0px 20px;
 }

@@ -1,0 +1,118 @@
+---
+title: Servers
+---
+Node.js has access to OS level functionality, like networking tools. This
+allows us to build very capable servers. Mixed with the fact that Node.js
+is single threaded and runs an even loop for async tasks, Node.js is widely
+used for API's that need to respond fast and don't require heavy CPU intensive
+work.
+
+## The hard way
+Node.js ships with the `http` module. This module is an abstraction
+around OS level networking tools. For Node.js, the http module would
+be considered "low level". Let's create a simple server.
+
+```js
+import http from 'http'
+
+const host = 'localhost'
+const port = 8000
+
+const server = http.createServer((req, res) => {
+  if (req.method === 'POST') {
+    let body = ''
+
+    req.on('data', chunk => {
+      body += chunk.toString()
+    })
+
+    req.on('end', () => {
+      if (req.headers['content-type'] === 'application/json') {
+        body = JSON.parse(body)
+      }
+
+      console.log(body)
+      res.writeHead(201)
+      res.end('ok')
+    })
+  } else {
+    res.writeHead(200)
+    res.end('hello from my server')
+  }
+
+})
+
+server.listen(port, host, () => {
+  console.log(`Server is running on http://${host}:${port}`)
+})
+```
+
+Using the `createServer` method on the http module, we create a server.
+Before we start the server, we need to make sure it can handle
+incoming requests. That's the callback inside of `createServer`.
+Next is starting the server. To do that, we need a port and a host.
+Sites default to port `8080` or `8000` so it's not uncommon to use
+that when developing locally. The host is going to be your machine,
+which is `localhost` or `127.0.0.1`.
+
+Using the `http` module is fine for this small example,
+but for bulding real world APIs we should utilize the community
+and install some packages to help up with this task.
+
+## Express
+There is an awesome packaged, `express`, that makes creating servers
+in Node.js a breeze. We're going to use it now.
+
+`npm install express body-parser morgan`
+
+* `express` - a framework for building servers
+* `body-parser` - a middleware that parses incoming requests
+* `morgan` = a middleware for logging incoming requests
+
+With everything installed, we'll create a simple API for a todo app using
+express.
+
+```js
+import express from 'express'
+import morgan from 'morgan'
+import bp from 'body-parser'
+
+const { urlencoded, json } = bp
+
+const db = {
+  todos: [],
+}
+
+const app = express()
+
+app.use(urlencoded({ extended: true }))
+app.use(json())
+app.use(morgan('dev'))
+
+app.get('/todo', (req, res) => {
+  res.json({ data: db.todos })
+})
+
+app.post('/todo', (req, res) => {
+  const newTodo = { complete: false, id: Date.now(), text: req.body.text }
+  db.todos.push(newTodo)
+
+  res.json({ data: newTodo })
+})
+
+app.listen(8000, () => {
+  console.log('Server on http://localhost:8000')
+})
+```
+Compared to the native `http` module, express feels
+like cheating.
+
+Our todo API has two routes:
+
+* `GET /todo` - get all todos
+* `POST /todo` - create a new todo
+
+Express has a healthy community with tons of plugins
+and middleware to help you build out API's. I have a [course
+or two](https://frontendmasters.com/courses/api-design-nodejs-v3/) showing you how!
+Check those out to really learn how to get the best of Express.

@@ -1,21 +1,28 @@
 {
-  "name": "curriculum",
+  "name": "reddit",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
+  "bin": {
+    "reddit": "./test.mjs"
+  },
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
     "gray-matter": "^4.0.2",
     "lodash.merge": "^4.6.2",
     "lodash.orderby": "^4.6.0",
     "mdx-prism": "^0.3.1",
     "mdx-prism-2": "^2.0.0",
+    "morgan": "^1.10.0",
     "next": "10.2.0",
     "next-mdx-remote": "^1.0.0",
+    "node-fetch": "^2.6.1",
+    "open": "^8.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
@@ -25,7 +32,8 @@
     "remark-autolink-headings": "^6.0.1",
     "remark-code-titles": "^0.1.1",
     "remark-highlight.js": "^6.0.0",
-    "remark-slug": "^6.0.0"
+    "remark-slug": "^6.0.0",
+    "yargs": "^17.0.1"
   },
   "devDependencies": {
     "@ijsto/eslint-config": "*",

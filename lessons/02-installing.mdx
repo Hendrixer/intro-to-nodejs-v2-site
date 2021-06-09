@@ -1,0 +1,17 @@
+---
+title: Installing Node.js
+---
+
+## For Windows
+If you're running windows and not using WSL, I recommend you use the [official instlaller](https://nodejs.org/en/) from the
+Node.js site. Choose the latest LTS version.
+
+## For everyone else
+If you're not on windows or you are using WSL, I recommend using installing Node.js with [`nvm` (node version manager)](https://github.com/nvm-sh/nvm).
+NVM allows you to install many versions of Node.js at once and switch when you need. Also, NVM installs Node.js in a folder that will not have permission
+errors that you would otherwise run into with the official installer.
+
+Once you have nvm installed, you need to install a Node version. You can download the latest LTS version with this command.
+
+
+`nvm install --lts`
