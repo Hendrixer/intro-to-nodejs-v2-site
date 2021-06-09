@@ -1,0 +1,75 @@
+---
+title: Deployment
+---
+Now that you can develop with Node.js, you need to learn how to get
+your apps off your local machine and into the world. Depending on what 
+your app does will determine how you deploy it.
+
+## Packages
+For CLI's, Libraries, Plugins, etc, you would publish these to NPM so
+othere devs can install it. The NPM CLI makes this easy. Let's take our
+CLI that we created and publish it.
+
+First thing is to make sure you have a unique package name in the name field of
+`package.json`. NPM will let you know when you try to publish. Next, create a
+NPM account. Once you've done that, you need to login to NPM from your terminal with
+
+`npm login`
+
+We're now ready to publish. Just run:
+
+`npm publish` 
+
+And that's it. Your CLI can now be installed with `npm install [name]`.
+
+## Servers
+For API's and background tasks that operation on API's or databases, you'd
+deploy these to a hosting provider like AWS, Heroku, Google Cloud, etc.
+Let's deploy our Server! We'll be using Heroku for this as its really easy
+to deploy an app.
+
+First create a heroku account and then install the [cli](https://devcenter.heroku.com/articles/heroku-cli).
+Next, we have to tell heroku how to start our app. We can add a `start` script
+in our package.json. We also have to tell heroku what version of Node.js we want to use.
+
+```json
+"scripts": {
+  "start": "node ./path/to/server.mjs"
+},
+
+"engines": {
+  "node": "14.x"
+}
+```
+
+We have to change a few things to ensure our Server won't crash when deployed. Right now
+we have a hard coded port, we need to change that to an environment variable that Heroku
+will inject at runtime. We can use `process.env.PORT`. Lastly, make sure
+we're not checking in the `node_modules` folder into git by adding it to the
+`.gitignore` file. If you don't have one, then create one and this
+
+```
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
+```
+
+These are just some common files and folders that we don't want tracked in git.
+We'll be deploying to heroku with git, so we don't want these files in heroku either.
+Commit your changes to git, and then login to the heroku CLI
+
+`heroku login`
+
+Next, create a new heroku app:
+
+`heroku create`
+
+Finally, push our server to heroku via git
+
+`git push heroku main`
+
+You'll see the build output of heroku deploying your app. Once its done, we can
+try the live URL.
+
+...And that's it!
