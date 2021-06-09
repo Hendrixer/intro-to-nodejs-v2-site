@@ -8,7 +8,7 @@ module.exports = {
     midnight: '#121212',
   }),
   darkMode: 'class', // or 'media' or 'class'
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  // purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
       sans: ['Lato', 'Arial', 'sans-serif'],
