@@ -3,8 +3,8 @@ title: File System
 ---
 
 Until Node.js, there wasn't a great way to access the file system on a machine with
-JavaScript, this is due to secutrity restrictions in most browsers. With Node.js,
-one can create, edit, remote, read, stream, & more with files. If you've ever used
+JavaScript, this is due to security restrictions in most browsers. With Node.js,
+one can create, edit, remove, read, stream, & more with files. If you've ever used
 a build tool like webpack or a parser like babel, then you realize just how powerful
 Node.js can be when manipulating the file system.
 
@@ -28,7 +28,7 @@ Create a simple html file `template.html`.
 </body>
 </html>
 ```
-This `html` file will be used as template and has placeholders
+This `html` file will be used as a template and has placeholders
 that we will interpolate later when writing a file.
 
 To read the file:
@@ -38,16 +38,16 @@ import { readFile } from 'fs/promises'
 let template = await readFile(new URL('./template.html', import.meta.url), 'utf-8')
 ```
 
-The `fs` module has import for promise based methods. We'll
+The `fs` module has support for promise based methods. We'll
 opt to use those as they have a cleaner API and using
 async + non-blocking methods are preferred. More on that later.
 Because we're using `.mjs` files, we don't have access to
 `__dirname` or `__filename` which is what is normally
 used in combination with the `path` module to form an
-appropiate file path for fs. So we have to use the `URL`
+appropriate file path for fs. So we have to use the `URL`
 global that takes a relative path and a base path and will
 create a URL object that is accepted by `readFile`. If you were to
-log `template`, you'd see that its just a string.
+log `template`, you'd see that it's just a string.
 
 
 ## Write a file

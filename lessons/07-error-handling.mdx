@@ -3,21 +3,21 @@ title: Error Handling
 ---
 The last thing you want is your entire server crashing because
 of an error, or, is that exactly what you want 🤷‍♀️? Regardless,
-you should have th choice. So you better handle those errors. 
+you should have the choice. So you better handle those errors. 
 Depending on the type of code (sync, promise, async callback, async await, etc)
 Node allows us to handle our errors how we see fit.
 
 ## Process exiting
-When a exception is thrown in Node.js, the current process will
+When an exception is thrown in Node.js, the current process will
 exit with a code of `1`. This effectively errors out and stops
-your programing completely. You can manually do this with:
+your program completely. You can manually do this with:
 
 `process.exit(1)`
 
 Although you shouldn't. This is low level and offers no chance
 to catch or handle an exception to decide on what to do. Imagine
 your entire API shutting down and restarting just because a user
-sent a malformed payload that resulting the DB throwing and exception.
+sent a malformed payload that results in the DB throwing an exception.
 That would be terrible.
 
 ## Async Errors
