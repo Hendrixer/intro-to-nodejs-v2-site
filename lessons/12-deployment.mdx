@@ -7,12 +7,12 @@ your app does will determine how you deploy it.
 
 ## Packages
 For CLI's, Libraries, Plugins, etc, you would publish these to NPM so
-othere devs can install it. The NPM CLI makes this easy. Let's take our
+other devs can install it. The NPM CLI makes this easy. Let's take our
 CLI that we created and publish it.
 
 First thing is to make sure you have a unique package name in the name field of
 `package.json`. NPM will let you know when you try to publish. Next, create a
-NPM account. Once you've done that, you need to login to NPM from your terminal with
+NPM account. Once you've done that, you need to log in to NPM from your terminal with
 
 `npm login`
 
@@ -23,9 +23,9 @@ We're now ready to publish. Just run:
 And that's it. Your CLI can now be installed with `npm install [name]`.
 
 ## Servers
-For API's and background tasks that operation on API's or databases, you'd
+For API's and background tasks that run operations on API's or databases, you'd
 deploy these to a hosting provider like AWS, Heroku, Google Cloud, etc.
-Let's deploy our Server! We'll be using Heroku for this as its really easy
+Let's deploy our Server! We'll be using Heroku for this as it's really easy
 to deploy an app.
 
 First create a heroku account and then install the [cli](https://devcenter.heroku.com/articles/heroku-cli).
@@ -46,7 +46,7 @@ We have to change a few things to ensure our Server won't crash when deployed. R
 we have a hard coded port, we need to change that to an environment variable that Heroku
 will inject at runtime. We can use `process.env.PORT`. Lastly, make sure
 we're not checking in the `node_modules` folder into git by adding it to the
-`.gitignore` file. If you don't have one, then create one and this
+`.gitignore` file. If you don't have one, then create one and add this
 
 ```
 /node_modules
@@ -69,7 +69,7 @@ Finally, push our server to heroku via git
 
 `git push heroku main`
 
-You'll see the build output of heroku deploying your app. Once its done, we can
+You'll see the build output of heroku deploying your app. Once it's done, we can
 try the live URL.
 
 ...And that's it!
