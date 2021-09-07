@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
               <Toggle />
             </div>
 
-            <div className="w-full min-h-screen">
+            <div className="w-full overflow-x-hidden min-h-screen">
               <Component {...pageProps} />
             </div>
           </main>
