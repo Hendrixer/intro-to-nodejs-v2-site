@@ -9,31 +9,30 @@ or globals needed. If you've ever done `window.App = window.App || {}` then
 you'll like this!
 
 ## What is a module
+
 A module is a reusable chunk of code that has its own context. That way modules
 can't interfere with or polute the global scope.
 
 You can think of them like lego blocks that you can create, import, and share.
 
 ## Two module types
-By default, Node.js uses common js modules. With newer versions of Node.js
+
+By default, Node.js uses CommonJS modules. With newer versions of Node.js
 we can now take advantage of ES6 modules. To opt into using this syntax,
 you can use the `.mjs` extension instead of `.js`. We'll be using the ES6
 module syntax going forward as they are the standard now with browsers adding
 support now.
 
 ## Module syntax
+
 Now, let's create our first module. The only thing we have to do is expose some code
 in one for our JavaScript files. We can do that with the `export` keyword.
 
 ```js
 // utils.js
-export const action = () => {
+export const action = () => {}
 
-}
-
-export const run = () => {
-
-}
+export const run = () => {}
 ```
 
 ```js
@@ -41,6 +40,7 @@ export const run = () => {
 
 import { action, run } from './utils'
 ```
+
 Few things happening here. Let's look at the `utils.js` file. Here we're using the
 `export` keyword before the variable declartion. This creates a named export. With the
 name being whatever the variable name is. In this case, a function called `action`.
@@ -48,8 +48,7 @@ Now in `app.js`, we `import` the action module from the `utils` file. The path t
 is relative to the file you're importing from. You also have to prefix your path with a
 `'./'`. If you don't, Node will think you're trying to import a built in module or npm module.
 Because this wa a named export, we have to import with brackets `{ action, run }` with the exact
-name of the modules exported. We don't have to import every module that is exported. 
-
+name of the modules exported. We don't have to import every module that is exported.
 
 Usually if you only have to expose one bit of code, you should use the `default`
 keyword. This allows you to import the module with whatever name you want.
@@ -69,10 +68,11 @@ import whateverIWant from './utils'
 You can read more about the module syntax on the [Node.js docs.](https://nodejs.org/api/packages.html)
 
 ## Internal Modules
-Node.js comes with some great internal modules. You can think of them as like the
-phenonminal global APIs in the browser. Here are some of the most useful ones:
 
-* `fs` - useful for interacting with the file system.
-* `path` - lib to assit with manipulating file paths and all their nuiances.
-* `child_process` - spawn subprocesses in the background.
-* `http` - interact with OS level networking. Useful for creating servers.
+Node.js comes with some great internal modules. You can think of them as like the
+phenominal global APIs in the browser. Here are some of the most useful ones:
+
+- `fs` - useful for interacting with the file system.
+- `path` - lib to assit with manipulating file paths and all their nuiances.
+- `child_process` - spawn subprocesses in the background.
+- `http` - interact with OS level networking. Useful for creating servers.

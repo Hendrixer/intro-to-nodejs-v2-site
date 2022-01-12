@@ -1,17 +1,20 @@
 ---
 title: CLIs
 ---
+
 A CLI, or command line interface is a program desgined to start and complete one off
 tasks. Like git or npm. Node.js is a perfect runtime to create a CLI that will run on
-any machine that has Node.js isntalled. 
+any machine that has Node.js installed.
 
 ## Creating a CLI
+
 Creating a CLI in Node.js just takes a extra step or two because
 they are really just an ordinary Node.js app wrapped behind a bin command.
 For this exercise, we'll create a CLI that opens a random reddit post in our
-browser. To start, we'll create a new folder and make it a package with npm init.
+browser. To start, we'll create a new folder and make it a package with `npm init`.
 
 Once inside that folder, create a file reddit.mjs:
+
 ```js
 // reddit.mjs
 #! /usr/bin/env node
@@ -21,10 +24,11 @@ console.log('hello from your CLI')
 
 The fist line on that file is called a shabang or hashbang. It's needed to tell
 the machine where the interpreter is located that is needed to execute this file.
-For us, that will be Node.js. 
+For us, that will be Node.js.
 
 Next we need to tell Node.js what the name of our CLI is so when can actually
 use it in our terminal. Just have to add a section to our package.json:
+
 ```json
 "bin": {
   "reddit": "./reddit.mjs"
@@ -39,12 +43,13 @@ just execute the file with the node runtime, but we want to see the CLI actually
 
 `npm install -g`
 
-We can simply instll with no args which tells npm to install the current director.
+We can simply install with no args which tells npm to install the current director.
 The `-g` flag means we want to globally install this package vs in a local node_modules.
 
 You should now be able to run `reddit` and see your log print.
 
 ## Packages in our Pacakge
+
 Now to realize our dream of our reddit CLI opening a random reddit post,
 we have some work to do. Luckily for us, we can use NPM to install some packages
 to help.
@@ -52,11 +57,13 @@ to help.
 `npm install open node-fetch yargs --save`
 
 We'll install just these three packages.
-* `open` - will open our browser with a URL
-* `node-fetch` - is a fetch client that we can use to hit the reddit API
-* `yargs` - will allow us to process any flags or arguments passed to the CLI
+
+- `open` - will open our browser with a URL
+- `node-fetch` - is a fetch client that we can use to hit the reddit API
+- `yargs` - will allow us to process any flags or arguments passed to the CLI
 
 So to put it all together
+
 ```js
 #! /usr/bin/env node
 // import our packages
@@ -84,6 +91,7 @@ if (argv.print) {
   open(`https://reddit.com${post.data.permalink}`)
 }
 ```
+
 With just a few lines of JS we were able to create a really powerful
 CLI with room for improvement. Like adding more options via flags. Even
-adding sub commands. 
+adding sub commands.

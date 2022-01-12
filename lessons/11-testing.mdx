@@ -1,11 +1,13 @@
 ---
 title: Testing
 ---
+
 One of the most common usecases for Node.js is writing test for
 Node.js and Frontend apps. Because Node.js can run outside the browser,
 it's perfect for CI environments and testing automations.
 
 ## Basic unit tests
+
 Unit test will test little chunks of your code in isolation
 to ensure they behave has intended. Node.js ships with the `assert`
 module. This module gives us so many utilities that allow us to create
@@ -13,12 +15,14 @@ expectations of on our code. When those expectations aren't met,
 assert will throw an error telling us why. This is perfect for testing!.
 
 First let's create some code to test:
+
 ```js
 // myLib.mjs
 export const add = (num1, num2) => num1 * num2
 ```
 
 Next let's write some assetions on this code
+
 ```js
 // test.mjs
 import assert from 'assert'
@@ -33,6 +37,7 @@ try {
   console.error(e)
 }
 ```
+
 Now run the test file with:
 
 `node test.mjs`
@@ -48,6 +53,7 @@ around it that make writing and reading tests satisfying. One of
 those tools that the comminity has adopted is called `jest`.
 
 ## Using Jest
+
 Jest is a testing lib created by Facebook. Its a wonderful tesitng
 lib for any situation. Let's give it a try! Create a new package with npm
 and install jest
@@ -61,6 +67,7 @@ another dev, those machines will only NEED to install dependencies and not
 dev dependency. Saving space and time.
 
 Next add a test script in the package.json:
+
 ```json
 "scripts": {
   "test": "jest"
@@ -72,12 +79,12 @@ Now we need some code to test.
 ```js
 // myLib.mjs
 
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const users = [{ email: 'goku@test.com', id: 1, name: 'Goku', verified: false }]
 
-const getNewUser = async id => {
+const getNewUser = async (id) => {
   await delay(100)
-  const user = users.find(u => u.id === id)
+  const user = users.find((u) => u.id === id)
 
   if (!user) throw new Error('User does not exist')
   return user
@@ -97,7 +104,7 @@ module.exports = { getNewUser, mapObjectToArray }
 ```
 
 At this time, the latest version of jest lacks support for ES modules without some
-setup, we're using commonjs modules. The next version of Jest will support
+setup, we're using CommonJS modules. The next version of Jest will support
 these though. We have some async code and a function with a callback.
 These would've been tedious to test with just assert alone. Jest makes this easy.
 
@@ -145,6 +152,7 @@ describe('mapObjectToArray', () => {
   })
 })
 ```
+
 Notice how we didn't have to require or import a jest module but yet
 we have access to all these new globals like `describe` and `test`. That's
 because this test file will be executed with the jest cli which will supply

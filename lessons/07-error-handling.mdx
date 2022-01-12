@@ -1,16 +1,18 @@
 ---
 title: Error Handling
 ---
+
 The last thing you want is your entire server crashing because
 of an error, or, is that exactly what you want 🤷‍♀️? Regardless,
-you should have th choice. So you better handle those errors. 
+you should have the choice. So you better handle those errors.
 Depending on the type of code (sync, promise, async callback, async await, etc)
 Node allows us to handle our errors how we see fit.
 
 ## Process exiting
+
 When a exception is thrown in Node.js, the current process will
 exit with a code of `1`. This effectively errors out and stops
-your programing completely. You can manually do this with:
+your programming completely. You can manually do this with:
 
 `process.exit(1)`
 
@@ -21,6 +23,7 @@ sent a malformed payload that resulting the DB throwing and exception.
 That would be terrible.
 
 ## Async Errors
+
 When dealing with callbacks that are used for async operations,
 the standard pattern is:
 
@@ -41,6 +44,7 @@ For `promises`, you can continue to use the `.catch()` pattern.
 Nothing new to see here.
 
 For `async / await` you should use `try / catch`.
+
 ```js
 try {
   const result = await asyncAction()
@@ -48,9 +52,12 @@ try {
   // handle error
 }
 ```
+
 ## Sync Errors
+
 For sync errors, `try / catch` works just fine, just like with
 async await.
+
 ```js
 try {
   const result = syncAction()
@@ -60,9 +67,11 @@ try {
 ```
 
 ## Catch All
+
 Finally, if you just can't catch those pesky errors for any reason.
-Maybe some lib is throwing them and you can't catch them. 
+Maybe some lib is throwing them and you can't catch them.
 You can use:
+
 ```js
 process.on('uncaughtException', cb)
 ```
